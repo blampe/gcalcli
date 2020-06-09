@@ -1558,7 +1558,7 @@ class gcalcli:
                 continue
             if self.ignoreDeclined:
                 if 'attendees' in event:
-                    attendee = [a for a in event['attendees'] if a['email'] == event['gcalcli_cal']['id']][0]
+                    attendee = ([a for a in event['attendees'] if a.get('email') == event['gcalcli_cal']['id']] or [None])[0]
                     if attendee and attendee['responseStatus'] == 'declined':
                         continue
 
